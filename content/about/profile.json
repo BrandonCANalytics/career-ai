@@ -1,0 +1,11 @@
+{
+  "name": "Brandon Cantrell",
+  "positioning": "Analytics engineering, AI product, and data platform practitioner focused on turning messy data into decision-ready systems.",
+  "principles": [
+    "Treat analytics work like product work: instrument it, learn from user behavior, and improve the experience.",
+    "Favor fast, opinionated systems when they create speed to insight, activation, and impact.",
+    "Put business definitions in durable semantic layers so dashboards, notebooks, and AI interfaces can use the same logic.",
+    "Choose architecture based on workload shape: transactional systems need different tools than analytics engines.",
+    "Standards stick when the system makes the right path the easiest path."
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "default": [
+    "How does Brandon approach analytics engineering?",
+    "What AI-enabled systems has Brandon built?",
+    "Show examples of stakeholder-facing analytics products",
+    "What technologies has Brandon used?"
+  ],
+  "ae": [
+    "How does Brandon implement semantic modeling?",
+    "What production-minded dbt patterns has Brandon used?",
+    "Show Brandon's analytics engineering projects",
+    "How does Brandon balance speed and governance?"
+  ],
+  "ai": [
+    "What AI-enabled systems has Brandon built?",
+    "How would Brandon design AI over a semantic layer?",
+    "How does Brandon avoid hallucination in AI products?",
+    "What product thinking does Brandon bring to AI?"
+  ],
+  "gtm": [
+    "Show Brandon's paid media analytics work",
+    "How does Brandon create stakeholder-facing analytics products?",
+    "What metrics does Brandon standardize for GTM teams?",
+    "How would Brandon instrument this portfolio as a product?"
+  ],
+  "de": [
+    "What data platform patterns has Brandon used?",
+    "How does Brandon choose between BigQuery and Postgres?",
+    "Show Brandon's pipeline and deployment experience",
+    "What does Brandon value in data quality?"
+  ],
+  "da": [
+    "Show examples of stakeholder-facing analytics products",
+    "How does Brandon turn data into recommendations?",
+    "What dashboard design choices has Brandon made?",
+    "What technologies has Brandon used for analysis?"
+  ]
+}

@@ -1,0 +1,91 @@
+[
+  {
+    "id": "paid-media-mart",
+    "title": "HGU Media Analytics Platform",
+    "roleFit": ["ae", "gtm", "de", "da"],
+    "summary": "Proof-of-concept analytics platform that centralizes paid media performance across ad platforms into one canonical daily campaign mart.",
+    "impact": [
+      "Created a standardized cross-platform reporting model for executive dashboards and future optimization use cases.",
+      "Kept vendor API complexity upstream in Fivetran Quickstart dbt models while owning downstream canonical business logic.",
+      "Designed the POC so scaling from one client to all accounts requires configuration and data volume changes, not model refactors."
+    ],
+    "stack": ["Fivetran", "dbt Cloud", "SQL", "Paid media APIs", "Canonical marts", "BI"],
+    "architecture": [
+      "Media platform APIs",
+      "Fivetran connectors",
+      "Fivetran Quickstart dbt models",
+      "HGU dbt Cloud project",
+      "Canonical paid media marts",
+      "BI, reporting, and advanced analytics"
+    ],
+    "metrics": ["impressions", "clicks", "cost", "conversions", "view-through conversions"],
+    "links": [],
+    "details": "The canonical mart `mart_paid_media__campaign_daily` is modeled at date_day x platform x platform_account x campaign. Tests enforce non-null keys, accepted platform values, and grain consistency."
+  },
+  {
+    "id": "productdw",
+    "title": "ProductDW",
+    "roleFit": ["ae", "de", "da", "ai"],
+    "summary": "Mini ELT and analytics engineering project that transforms GA4 sample event data into analytics-ready BigQuery tables and KPIs.",
+    "impact": [
+      "Built a warehouse-native ELT flow from staging to core to marts.",
+      "Used SQL as version-controlled transformation logic and Python for parameterized BigQuery orchestration.",
+      "Delivered an interactive Streamlit KPI surface over modeled data."
+    ],
+    "stack": ["Python", "BigQuery", "SQL", "Streamlit", "Google Analytics 4", "Git"],
+    "architecture": [
+      "Raw GA4 events",
+      "BigQuery staging models",
+      "Core dimensional models",
+      "Analytics marts",
+      "Streamlit dashboard"
+    ],
+    "metrics": ["events", "users", "sessions", "conversion KPIs", "time-window aggregations"],
+    "links": [],
+    "details": "The project emphasizes dimensional modeling, clean joins, incremental thinking, warehouse-native execution, and reproducible pipeline structure."
+  },
+  {
+    "id": "burrito-dashboard",
+    "title": "Burrito Shack Executive Marketing Dashboard",
+    "roleFit": ["da", "gtm", "ae"],
+    "summary": "React and D3 executive analytics experience for marketing performance, growth opportunities, and KPI drill-down.",
+    "impact": [
+      "Prepared messy digital performance data with traceable data quality decisions.",
+      "Created executive and analyst paths through overview, market, channel, details, and insights views.",
+      "Added automatically generated month-over-month and year-over-year insight cards."
+    ],
+    "stack": ["React", "Vite", "D3.js", "Pandas", "Jupyter", "CSV analytics"],
+    "architecture": [
+      "Raw marketing dataset",
+      "Pandas cleaning and validation",
+      "Client-side CSV loading",
+      "D3 visualizations",
+      "Tabbed stakeholder dashboard"
+    ],
+    "metrics": ["revenue", "orders", "CVR", "AOV", "sessions", "bounce rate", "ad spend", "ROAS", "CTR", "CPC"],
+    "links": [],
+    "details": "The dashboard includes global market/channel/date filters, channel ROI, revenue and ROAS time series, market ranking, row-level investigation, and insight generation."
+  },
+  {
+    "id": "hard-thing",
+    "title": "1 Hard Thing a Day",
+    "roleFit": ["ai", "de"],
+    "summary": "A deployed FastAPI web app with a Postgres-backed challenge spinner, user submissions, and admin approval workflow.",
+    "impact": [
+      "Shipped a full-stack app beyond local development with database hosting, Docker, secrets, HTTPS, and deployment health checks.",
+      "Designed moderation flow so user-submitted content can be reviewed before entering the live catalog.",
+      "Used deployment experience to strengthen product engineering fundamentals."
+    ],
+    "stack": ["FastAPI", "Python", "Postgres", "Neon", "SQLAlchemy", "asyncpg", "Docker", "Fly.io", "TailwindCSS"],
+    "architecture": [
+      "FastAPI application",
+      "Async SQLAlchemy data layer",
+      "Neon Postgres",
+      "Dockerized deployment",
+      "Fly.io hosting"
+    ],
+    "metrics": ["daily challenge catalog", "submission queue", "admin approvals"],
+    "links": [{ "label": "Live demo", "href": "https://one-hard-thing.fly.dev" }],
+    "details": "The randomizer returns either one full challenge or two half-challenges. Submissions land in a moderation table before approval moves them into the live item catalog."
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Analytics engineering",
+    "topics": ["dbt", "marts", "semantic layer", "metrics", "testing"],
+    "evidence": "Canonical paid media mart, ProductDW staging/core/mart flow, metric consistency and grain tests."
+  },
+  {
+    "name": "Data platforms",
+    "topics": ["BigQuery", "Postgres", "ELT", "orchestration", "normalization"],
+    "evidence": "BigQuery warehouse-native ELT, Neon Postgres deployment, Python orchestration, workload-fit database reasoning."
+  },
+  {
+    "name": "AI product thinking",
+    "topics": ["retrieval", "guardrails", "personalization", "decision intelligence"],
+    "evidence": "This portfolio uses role targeting, deterministic local retrieval, source-grounded responses, and product analytics instrumentation."
+  },
+  {
+    "name": "Stakeholder analytics",
+    "topics": ["dashboards", "executive reporting", "GTM analytics", "insight writing"],
+    "evidence": "Burrito Shack executive dashboard, paid media analytics platform, decision-intelligence writing."
+  },
+  {
+    "name": "Product analytics",
+    "topics": ["PostHog", "events", "funnels", "session depth", "role segmentation"],
+    "evidence": "Portfolio instrumentation tracks prompt clicks, project engagement, role segmentation, resume downloads, and CTA clicks."
+  }
+]

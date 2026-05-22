@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-body: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-display: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --background: 220 18% 6%;
+  --foreground: 210 20% 96%;
+  --card: 220 15% 9%;
+  --card-foreground: 210 20% 96%;
+  --primary: 167 72% 46%;
+  --primary-foreground: 220 18% 6%;
+  --secondary: 218 13% 14%;
+  --secondary-foreground: 210 20% 96%;
+  --muted: 218 12% 15%;
+  --muted-foreground: 215 12% 68%;
+  --accent: 220 16% 18%;
+  --accent-foreground: 210 20% 96%;
+  --border: 218 13% 20%;
+  --input: 218 13% 20%;
+  --ring: 167 72% 46%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  font-family: var(--font-body);
+  background: hsl(var(--background));
+}
+
+h1,
+h2,
+h3,
+header {
+  font-family: var(--font-display);
+}
+
+::selection {
+  background: rgba(20, 184, 166, 0.35);
+}
+
+.markdown {
+  color: hsl(var(--foreground));
+}
+
+.markdown p {
+  margin: 0.6rem 0;
+}
+
+.markdown ul {
+  margin: 0.6rem 0;
+  padding-left: 1.2rem;
+  list-style: disc;
+}
+
+.markdown strong {
+  color: white;
+}
