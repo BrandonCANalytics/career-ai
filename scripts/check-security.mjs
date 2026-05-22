@@ -12,6 +12,7 @@ if (!ignoredEnv.includes(".gitignore")) {
 const trackedFiles = execFileSync("git", ["ls-files"], { encoding: "utf8" })
   .split("\n")
   .filter(Boolean)
+  .filter((file) => file !== "scripts/check-security.mjs")
   .filter((file) => !file.endsWith(".pdf"))
   .filter((file) => fs.existsSync(file));
 

@@ -32,4 +32,8 @@ for (const resume of [
   }
 }
 
+if (!fs.existsSync("app/icon.svg")) {
+  throw new Error("Missing favicon asset: app/icon.svg");
+}
+
 console.log("Smoke checks passed.");
