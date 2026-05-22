@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowRight, Download, Github, MessageSquare, PanelsTopLeft } from "lucide-react";
+import { ArrowRight, Download, Github, Linkedin, MessageSquare, PanelsTopLeft } from "lucide-react";
 import { ChatPanel } from "@/components/chat/chat-panel";
 import { ProjectShowcase } from "@/components/projects/project-showcase";
 import { Badge } from "@/components/ui/badge";
@@ -21,6 +21,7 @@ const resumeByRole: Record<RoleKey, string> = {
 };
 
 const githubUrl = "https://github.com/BrandonCANalytics";
+const linkedinUrl = "https://www.linkedin.com/in/canalytics/";
 
 const skillEvidence: Record<string, string> = {
   "Analytics engineering": "I build canonical marts, dimensional models, tested grains, and governed metrics.",
@@ -233,7 +234,7 @@ function PanelActions({
           Projects
         </button>
       </div>
-      <div className="grid min-w-0 grid-cols-2 rounded-lg border bg-card p-1 shadow-soft-border sm:w-[220px]">
+      <div className="grid min-w-0 grid-cols-3 rounded-lg border bg-card p-1 shadow-soft-border sm:w-[330px]">
         <a
           className="inline-flex h-9 min-w-0 items-center justify-center gap-2 rounded-md px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
           download
@@ -252,6 +253,16 @@ function PanelActions({
         >
           <Github className="h-3.5 w-3.5" />
           GitHub
+        </a>
+        <a
+          className="inline-flex h-9 min-w-0 items-center justify-center gap-2 rounded-md px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+          href={linkedinUrl}
+          onClick={() => track("cta_clicked", { role, cta: "linkedin" })}
+          rel="noreferrer"
+          target="_blank"
+        >
+          <Linkedin className="h-3.5 w-3.5" />
+          LinkedIn
         </a>
       </div>
     </div>
