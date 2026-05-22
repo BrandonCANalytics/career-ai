@@ -70,9 +70,9 @@ export function PortfolioShell({ config, projects, role }: PortfolioShellProps) 
   }, [role]);
 
   return (
-    <main className="min-h-screen lg:h-screen lg:overflow-hidden">
-      <div className="mx-auto grid w-full max-w-7xl gap-6 px-4 py-5 lg:h-screen lg:grid-cols-[minmax(0,0.92fr)_minmax(520px,1.08fr)] lg:px-6">
-        <section className="space-y-5 lg:flex lg:h-[calc(100vh-40px)] lg:flex-col lg:justify-between lg:overflow-hidden">
+    <main className="min-h-screen overflow-x-clip lg:h-screen lg:overflow-hidden">
+      <div className="mx-auto grid w-full min-w-0 max-w-7xl grid-cols-[minmax(0,1fr)] gap-6 px-4 py-5 lg:h-screen lg:grid-cols-[minmax(0,0.92fr)_minmax(520px,1.08fr)] lg:px-6">
+        <section className="w-full min-w-0 max-w-[calc(100vw-2rem)] space-y-5 lg:flex lg:h-[calc(100vh-40px)] lg:max-w-none lg:flex-col lg:justify-between lg:overflow-hidden">
           <header className="flex items-center justify-between">
             <div>
               <p className="text-sm font-semibold">BrandonCantrell.ai</p>
@@ -83,17 +83,17 @@ export function PortfolioShell({ config, projects, role }: PortfolioShellProps) 
 
           <section className="space-y-4 pt-6 lg:pt-8 xl:pt-14">
             <div className="space-y-4">
-              <h1 className="max-w-3xl text-3xl font-semibold tracking-normal text-white sm:text-4xl xl:text-5xl">
+              <h1 className="w-full max-w-3xl break-words text-3xl font-semibold tracking-normal text-white sm:text-4xl xl:text-5xl">
                 {config.headline}
               </h1>
               <p className="max-w-2xl text-base leading-7 text-muted-foreground">{config.subhead}</p>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="grid w-full min-w-0 grid-cols-[minmax(0,1fr)] gap-3 sm:grid-cols-2">
               {config.emphasizedSkills.map((skill) => (
-                <div className="rounded-lg border bg-card p-3 shadow-soft-border sm:p-4" key={skill}>
+                <div className="min-w-0 rounded-lg border bg-card p-3 shadow-soft-border sm:p-4" key={skill}>
                   <p className="text-sm font-medium">{skill}</p>
-                  <p className="mt-2 text-xs leading-5 text-muted-foreground">{skillEvidence[skill]}</p>
+                  <p className="mt-2 break-words text-xs leading-5 text-muted-foreground">{skillEvidence[skill]}</p>
                 </div>
               ))}
             </div>
@@ -101,7 +101,7 @@ export function PortfolioShell({ config, projects, role }: PortfolioShellProps) 
           </section>
         </section>
 
-        <aside className="flex h-[calc(100dvh-2rem)] min-h-[560px] flex-col sm:h-[calc(100dvh-2.5rem)] lg:sticky lg:top-5 lg:h-[calc(100vh-40px)] lg:min-h-0" id="chat">
+        <aside className="flex h-[calc(100dvh-2rem)] min-h-[560px] w-full min-w-0 max-w-[calc(100vw-2rem)] flex-col sm:h-[calc(100dvh-2.5rem)] lg:sticky lg:top-5 lg:h-[calc(100vh-40px)] lg:min-h-0 lg:max-w-none" id="chat">
           <PanelActions activePanel={activePanel} onPanelChange={setActivePanel} role={role} />
           {activePanel === "chat" ? (
             <ChatPanel prompts={config.prompts} role={role} />
@@ -169,7 +169,7 @@ function ProjectsPanel({
   role: RoleKey;
 }) {
   return (
-    <section className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-lg border bg-card shadow-soft-border">
+    <section className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden rounded-lg border bg-card shadow-soft-border">
       <div className="flex shrink-0 items-center justify-between border-b px-4 py-3">
         <div>
           <p className="text-sm font-medium">Selected work</p>
@@ -198,14 +198,14 @@ function PanelActions({
   role: RoleKey;
 }) {
   return (
-    <div className="mb-3 grid shrink-0 gap-2 sm:grid-cols-[minmax(0,1fr)_auto]">
-      <div aria-label="Portfolio panel view" className="grid grid-cols-2 rounded-lg border bg-card p-1 shadow-soft-border">
+    <div className="mb-3 grid min-w-0 shrink-0 gap-2 sm:grid-cols-[minmax(0,1fr)_auto]">
+      <div aria-label="Portfolio panel view" className="grid min-w-0 grid-cols-2 rounded-lg border bg-card p-1 shadow-soft-border">
         <button
           aria-pressed={activePanel === "chat"}
           className={
             activePanel === "chat"
-              ? "inline-flex h-9 items-center justify-center gap-2 rounded-md bg-primary px-3 text-xs font-medium text-primary-foreground"
-              : "inline-flex h-9 items-center justify-center gap-2 rounded-md px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+              ? "inline-flex h-9 min-w-0 items-center justify-center gap-2 rounded-md bg-primary px-3 text-xs font-medium text-primary-foreground"
+              : "inline-flex h-9 min-w-0 items-center justify-center gap-2 rounded-md px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
           }
           onClick={() => {
             onPanelChange("chat");
@@ -220,8 +220,8 @@ function PanelActions({
           aria-pressed={activePanel === "projects"}
           className={
             activePanel === "projects"
-              ? "inline-flex h-9 items-center justify-center gap-2 rounded-md bg-primary px-3 text-xs font-medium text-primary-foreground"
-              : "inline-flex h-9 items-center justify-center gap-2 rounded-md px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+              ? "inline-flex h-9 min-w-0 items-center justify-center gap-2 rounded-md bg-primary px-3 text-xs font-medium text-primary-foreground"
+              : "inline-flex h-9 min-w-0 items-center justify-center gap-2 rounded-md px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
           }
           onClick={() => {
             onPanelChange("projects");
@@ -233,9 +233,9 @@ function PanelActions({
           Projects
         </button>
       </div>
-      <div className="grid grid-cols-2 rounded-lg border bg-card p-1 shadow-soft-border sm:w-[220px]">
+      <div className="grid min-w-0 grid-cols-2 rounded-lg border bg-card p-1 shadow-soft-border sm:w-[220px]">
         <a
-          className="inline-flex h-9 items-center justify-center gap-2 rounded-md px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+          className="inline-flex h-9 min-w-0 items-center justify-center gap-2 rounded-md px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
           download
           href={resumeByRole[role]}
           onClick={() => track("resume_download_clicked", { role })}
@@ -244,7 +244,7 @@ function PanelActions({
           Resume
         </a>
         <a
-          className="inline-flex h-9 items-center justify-center gap-2 rounded-md px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+          className="inline-flex h-9 min-w-0 items-center justify-center gap-2 rounded-md px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
           href={githubUrl}
           onClick={() => track("cta_clicked", { role, cta: "github" })}
           rel="noreferrer"
