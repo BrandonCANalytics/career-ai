@@ -3,8 +3,6 @@ import { streamText } from "ai";
 import { formatContextForPrompt, retrieveContext } from "@/lib/content";
 import { normalizeRole, roleLabels } from "@/lib/roles";
 
-export const runtime = "edge";
-
 export async function POST(req: Request) {
   const { messages, role } = await req.json();
   const lastMessage = [...messages].reverse().find((message) => message.role === "user");

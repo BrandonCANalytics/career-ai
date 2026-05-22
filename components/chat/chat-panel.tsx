@@ -24,7 +24,7 @@ export function ChatPanel({ role, prompts }: ChatPanelProps) {
         id: "intro",
         role: "assistant",
         content:
-          "Ask me about Brandon's analytics engineering work, AI product thinking, data platforms, or stakeholder-facing analytics projects. I answer from curated portfolio context."
+          "Ask me about my analytics engineering work, AI product thinking, data platforms, or stakeholder-facing analytics projects. I answer from curated portfolio context."
       }
     ]
   });
@@ -46,7 +46,7 @@ export function ChatPanel({ role, prompts }: ChatPanelProps) {
   }
 
   return (
-    <section className="flex h-[calc(100dvh-2rem)] min-h-[520px] flex-col overflow-hidden rounded-lg border bg-card shadow-soft-border lg:h-auto lg:min-h-0 lg:flex-1">
+    <section className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-lg border bg-card shadow-soft-border">
       <div className="shrink-0 flex items-center justify-between border-b px-4 py-3">
         <div className="flex items-center gap-2 text-sm font-medium">
           <Sparkles className="h-4 w-4 text-primary" />
@@ -94,7 +94,7 @@ export function ChatPanel({ role, prompts }: ChatPanelProps) {
 
         <form className="flex items-end gap-2" onSubmit={submit}>
           <Textarea
-            aria-label="Ask about Brandon's work"
+            aria-label="Ask about my work"
             onChange={handleInputChange}
             placeholder="Ask about semantic modeling, AI systems, GTM analytics, or technical projects..."
             value={input}

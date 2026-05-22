@@ -20,9 +20,9 @@ export const roleConfig: Record<
   }
 > = {
   default: {
-    headline: "Ask BrandonCantrell.ai about analytics engineering, AI systems, and data products.",
+    headline: "I build analytics systems, AI experiences, and data products that turn messy data into decisions.",
     subhead:
-      "A conversational portfolio that answers from curated career context, project artifacts, and Brandon's data product philosophy.",
+      "This is a conversational layer over my work, projects, and data product philosophy. Ask it how I think, what I have built, and where the technical decisions show up.",
     emphasizedSkills: ["Analytics engineering", "Semantic modeling", "AI-enabled workflows", "Executive analytics"],
     projectOrder: ["paid-media-mart", "productdw", "burrito-dashboard", "hard-thing"],
     prompts: [
@@ -33,9 +33,9 @@ export const roleConfig: Record<
     ]
   },
   ae: {
-    headline: "Analytics engineering portfolio, tuned for semantic models and trusted marts.",
+    headline: "I build analytics engineering systems around semantic models, trusted marts, and decision-ready metrics.",
     subhead:
-      "Explore Brandon's approach to dbt modeling, warehouse-native ELT, metrics consistency, and decision-ready data products.",
+      "I care about the layer where raw data becomes something people can actually use: dbt models, warehouse-native ELT, consistent definitions, and tests that make the right path easier.",
     emphasizedSkills: ["dbt marts", "BigQuery", "Metric governance", "Data quality tests"],
     projectOrder: ["paid-media-mart", "productdw", "burrito-dashboard", "hard-thing"],
     prompts: [
@@ -46,9 +46,9 @@ export const roleConfig: Record<
     ]
   },
   ai: {
-    headline: "AI-native experience layer for product-minded data work.",
+    headline: "I build AI-native experiences powered by product-minded data work.",
     subhead:
-      "A concise view of Brandon's ability to turn structured context, analytics workflows, and user intent into useful AI experiences.",
+      "The useful part of AI is not the demo. It is the system around it: structured context, clear retrieval, guardrails, and workflows that help people get to better answers faster.",
     emphasizedSkills: ["AI product design", "Structured retrieval", "Prompt systems", "Decision intelligence"],
     projectOrder: ["hard-thing", "paid-media-mart", "productdw", "burrito-dashboard"],
     prompts: [
@@ -59,9 +59,9 @@ export const roleConfig: Record<
     ]
   },
   gtm: {
-    headline: "GTM analytics and paid media intelligence, built like a product.",
+    headline: "I build GTM analytics and paid media intelligence like a product.",
     subhead:
-      "See how Brandon thinks about media performance, executive reporting, cross-platform metrics, and activation-ready insights.",
+      "Marketing teams do not need more disconnected reporting. They need clean cross-platform metrics, faster reads on performance, and insights that can actually change what happens next.",
     emphasizedSkills: ["Paid media analytics", "Executive dashboards", "ROAS modeling", "PostHog instrumentation"],
     projectOrder: ["paid-media-mart", "burrito-dashboard", "productdw", "hard-thing"],
     prompts: [
@@ -72,9 +72,9 @@ export const roleConfig: Record<
     ]
   },
   de: {
-    headline: "Data platform work with pragmatic ELT and workload-fit architecture.",
+    headline: "I build data platforms with pragmatic ELT and workload-fit architecture.",
     subhead:
-      "Review Brandon's warehouse, orchestration, normalization, and deployment decisions across analytics-heavy products.",
+      "I try to choose tools based on the shape of the problem. Sometimes that means Postgres. Sometimes it means BigQuery. The point is to build the system the workload actually needs.",
     emphasizedSkills: ["ELT pipelines", "Python orchestration", "Postgres", "Warehouse-backed apps"],
     projectOrder: ["productdw", "paid-media-mart", "hard-thing", "burrito-dashboard"],
     prompts: [
@@ -85,9 +85,9 @@ export const roleConfig: Record<
     ]
   },
   da: {
-    headline: "Analysis that moves from reporting to decision intelligence.",
+    headline: "I turn analysis into decision intelligence, not just reporting.",
     subhead:
-      "A recruiter-friendly view of Brandon's analytics, dashboarding, stakeholder communication, and insight generation.",
+      "Dashboards are useful when they help people decide. My focus is on clean KPIs, stakeholder-friendly interfaces, and analysis that explains what changed and what to do about it.",
     emphasizedSkills: ["KPI design", "Dashboard UX", "Insight writing", "Exploratory analysis"],
     projectOrder: ["burrito-dashboard", "paid-media-mart", "productdw", "hard-thing"],
     prompts: [

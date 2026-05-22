@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, Layers, Target } from "lucide-react";
+import { ChevronDown, ChevronRight, ExternalLink, Layers, Target } from "lucide-react";
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -36,7 +36,8 @@ export function ProjectShowcase({
           return (
             <Card key={project.id} className="overflow-hidden">
               <button
-                className="w-full text-left"
+                aria-expanded={isOpen}
+                className="group w-full text-left"
                 onClick={() => {
                   setOpenProject(isOpen ? "" : project.id);
                   track("project_opened", { role, project: project.id });
@@ -49,7 +50,17 @@ export function ProjectShowcase({
                       <CardTitle>{project.title}</CardTitle>
                       <p className="mt-2 text-sm leading-6 text-muted-foreground">{project.summary}</p>
                     </div>
-                    <Badge>{project.roleFit.slice(0, 2).join(" / ")}</Badge>
+                    <span
+                      className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border bg-background text-muted-foreground transition-colors group-hover:text-foreground"
+                      title={isOpen ? "Collapse project details" : "Expand project details"}
+                    >
+                      {isOpen ? (
+                        <ChevronDown aria-hidden="true" className="h-4 w-4" />
+                      ) : (
+                        <ChevronRight aria-hidden="true" className="h-4 w-4" />
+                      )}
+                      <span className="sr-only">{isOpen ? "Collapse project details" : "Expand project details"}</span>
+                    </span>
                   </div>
                 </CardHeader>
               </button>
