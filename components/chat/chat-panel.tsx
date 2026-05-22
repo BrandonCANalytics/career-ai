@@ -18,7 +18,7 @@ type ChatPanelProps = {
 const maxQuestions = 5;
 
 export function ChatPanel({ role, prompts }: ChatPanelProps) {
-  const bottomRef = useRef<HTMLDivElement>(null);
+  const messagesRef = useRef<HTMLDivElement>(null);
   const [showCreditLimit, setShowCreditLimit] = useState(false);
   const { messages, input, handleInputChange, handleSubmit, append, isLoading } = useChat({
     api: "/api/chat",
@@ -36,7 +36,16 @@ export function ChatPanel({ role, prompts }: ChatPanelProps) {
   const sessionDepth = useMemo(() => messages.filter((message) => message.role === "user").length, [messages]);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    const messagesElement = messagesRef.current;
+
+    if (!messagesElement) {
+      return;
+    }
+
+    messagesElement.scrollTo({
+      behavior: "smooth",
+      top: messagesElement.scrollHeight
+    });
   }, [messages, isLoading]);
 
   function submit(event: FormEvent<HTMLFormElement>) {
@@ -83,7 +92,7 @@ export function ChatPanel({ role, prompts }: ChatPanelProps) {
         </p>
       </Lightbox>
 
-      <section className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-lg border bg-card shadow-soft-border">
+      <section className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden rounded-lg border bg-card shadow-soft-border">
         <div className="shrink-0 flex items-center justify-between border-b px-4 py-3">
           <div className="flex items-center gap-2 text-sm font-medium">
             <Sparkles className="h-4 w-4 text-primary" />
@@ -94,14 +103,14 @@ export function ChatPanel({ role, prompts }: ChatPanelProps) {
           </div>
         </div>
 
-        <div className="min-h-0 flex-1 space-y-4 overflow-y-auto p-4">
+        <div className="min-h-0 min-w-0 flex-1 space-y-4 overflow-y-auto p-4" ref={messagesRef}>
           {messages.map((message) => (
             <div key={message.id} className={message.role === "user" ? "flex justify-end" : "flex justify-start"}>
               <div
                 className={
                   message.role === "user"
-                    ? "max-w-[85%] rounded-lg bg-primary px-4 py-3 text-sm text-primary-foreground"
-                    : "markdown max-w-[92%] rounded-lg border bg-background px-4 py-3 text-sm leading-6"
+                    ? "max-w-[85%] break-words rounded-lg bg-primary px-4 py-3 text-sm text-primary-foreground"
+                    : "markdown max-w-[92%] break-words rounded-lg border bg-background px-4 py-3 text-sm leading-6"
                 }
               >
                 <ReactMarkdown>{message.content}</ReactMarkdown>
@@ -114,7 +123,6 @@ export function ChatPanel({ role, prompts }: ChatPanelProps) {
               Reading portfolio context
             </div>
           ) : null}
-          <div ref={bottomRef} />
         </div>
 
         <div className="shrink-0 border-t p-4">
@@ -131,9 +139,10 @@ export function ChatPanel({ role, prompts }: ChatPanelProps) {
             ))}
           </div>
 
-          <form className="flex items-end gap-2" onSubmit={submit}>
+          <form className="flex min-w-0 items-end gap-2" onSubmit={submit}>
             <Textarea
               aria-label="Ask about my work"
+              className="min-w-0"
               onChange={handleInputChange}
               placeholder="Ask about semantic modeling, AI systems, GTM analytics, or technical projects..."
               value={input}
