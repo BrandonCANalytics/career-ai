@@ -42,6 +42,10 @@ header {
   background: rgba(20, 184, 166, 0.35);
 }
 
+nextjs-portal {
+  display: none !important;
+}
+
 .markdown {
   color: hsl(var(--foreground));
 }
