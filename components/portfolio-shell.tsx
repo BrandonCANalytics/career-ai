@@ -6,6 +6,7 @@ import { ChatPanel } from "@/components/chat/chat-panel";
 import { ProjectShowcase } from "@/components/projects/project-showcase";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Lightbox } from "@/components/ui/lightbox";
 import { track } from "@/lib/analytics";
 import { roleLabels } from "@/lib/roles";
 import type { Project, RoleKey } from "@/lib/types";
@@ -62,6 +63,7 @@ type PortfolioShellProps = {
 
 export function PortfolioShell({ config, projects, role }: PortfolioShellProps) {
   const [activePanel, setActivePanel] = useState<"chat" | "projects">("chat");
+  const [showGuardrails, setShowGuardrails] = useState(false);
 
   useEffect(() => {
     track("role_viewed", { role });
@@ -116,13 +118,43 @@ export function PortfolioShell({ config, projects, role }: PortfolioShellProps) 
                 ? "Context is role-prioritized and deterministic."
                 : "Projects are reordered for this visitor segment."}
             </span>
-            <span className="inline-flex items-center gap-1 text-primary">
-              {activePanel === "chat" ? "Sources enforced" : "Backed by local content"}
+            <button
+              className="inline-flex items-center gap-1 text-primary transition-colors hover:text-foreground"
+              onClick={() => {
+                setShowGuardrails(true);
+                track("cta_clicked", { role, cta: "llm_guardrails" });
+              }}
+              type="button"
+            >
+              LLM Guardrails
               <ArrowRight className="h-3 w-3" />
-            </span>
+            </button>
           </div>
         </aside>
       </div>
+
+      <Lightbox
+        description="How I keep the assistant useful without pretending it knows everything."
+        onClose={() => setShowGuardrails(false)}
+        open={showGuardrails}
+        title="LLM Guardrails"
+      >
+        <p>
+          I built this like a small data product, not a magic answer box. The assistant gets a
+          deterministic slice of local portfolio context before it responds, so the model is working from
+          known material instead of guessing from the open internet.
+        </p>
+        <p>
+          The prompt tells it to stay inside that context, keep answers concise, and say when the provided
+          material does not support a claim. That matters because good AI systems should produce decision
+          support, not confident noise.
+        </p>
+        <p>
+          Inputs are constrained by role, suggested prompts, and a five-question session limit. Outputs are
+          source-grounded and recruiter-focused. Nothing here replaces judgment; it gives the visitor a
+          faster path to the parts of my work that are actually relevant.
+        </p>
+      </Lightbox>
     </main>
   );
 }

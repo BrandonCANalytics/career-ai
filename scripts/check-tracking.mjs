@@ -26,7 +26,7 @@ for (const event of requiredEvents) {
   }
 }
 
-for (const cta of ["ask_ai", "projects", "github"]) {
+for (const cta of ["ask_ai", "projects", "github", "llm_guardrails", "chat_credit_limit"]) {
   if (!source.includes(`cta: "${cta}"`)) {
     throw new Error(`CTA tracking metadata is missing "${cta}".`);
   }
