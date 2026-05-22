@@ -1,7 +1,7 @@
 [
   {
     "id": "paid-media-mart",
-    "title": "HGU Media Analytics Platform",
+    "title": "Media Analytics Platform",
     "roleFit": ["ae", "gtm", "de", "da"],
     "summary": "Proof-of-concept analytics platform that centralizes paid media performance across ad platforms into one canonical daily campaign mart.",
     "impact": [
