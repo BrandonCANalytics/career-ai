@@ -19,8 +19,8 @@ const trackedFiles = execFileSync("git", ["ls-files"], { encoding: "utf8" })
 const secretPatterns = [
   /sk-proj-[A-Za-z0-9_-]+/,
   /sk-[A-Za-z0-9_-]{20,}/,
-  /OPENAI_API_KEY=[^\s]+/,
-  /NEXT_PUBLIC_POSTHOG_KEY=[^\s]+/
+  /OPENAI_API_KEY=(?!your_|example_|<|$)[^\s]+/,
+  /NEXT_PUBLIC_POSTHOG_KEY=(?!your_|example_|<|$)[^\s]+/
 ];
 
 for (const file of trackedFiles) {
@@ -35,6 +35,12 @@ for (const file of trackedFiles) {
 const chatRoute = fs.readFileSync("app/api/chat/route.ts", "utf8");
 if (chatRoute.includes('runtime = "edge"') || chatRoute.includes("runtime = 'edge'")) {
   throw new Error('Cloudflare OpenNext deployment requires removing route-level runtime = "edge".');
+}
+
+for (const requiredGuard of ["maxUserMessages", "maxMessages", "maxMessageChars", "maxTotalChars", "maxResponseTokens"]) {
+  if (!chatRoute.includes(requiredGuard)) {
+    throw new Error(`Chat API is missing request guard: ${requiredGuard}.`);
+  }
 }
 
 console.log("Security checks passed.");
