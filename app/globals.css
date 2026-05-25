@@ -82,3 +82,54 @@ nextjs-portal {
 .markdown strong {
   color: white;
 }
+
+.memoji-badge-stage {
+  perspective: 720px;
+}
+
+.memoji-coin {
+  animation: memoji-coin-spin 4.8s cubic-bezier(0.42, 0, 0.2, 1) infinite;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.memoji-coin-face {
+  backface-visibility: hidden;
+  border-radius: 9999px;
+  height: 100%;
+  inset: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.memoji-coin-face-back {
+  transform: rotateY(180deg);
+}
+
+@keyframes memoji-coin-spin {
+  0% {
+    transform: translate3d(0, 0, 0) rotateY(0deg) rotateZ(-4deg);
+  }
+
+  38% {
+    transform: translate3d(-4px, -6px, 0) rotateY(170deg) rotateZ(3deg);
+  }
+
+  50% {
+    transform: translate3d(-4px, -7px, 0) rotateY(180deg) rotateZ(4deg);
+  }
+
+  88% {
+    transform: translate3d(3px, 3px, 0) rotateY(350deg) rotateZ(-5deg);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) rotateY(360deg) rotateZ(-4deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .memoji-coin {
+    animation: none;
+  }
+}
