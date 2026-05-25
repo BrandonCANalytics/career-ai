@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
 import { useChat } from "ai/react";
 import ReactMarkdown from "react-markdown";
 import { ArrowUp, Loader2, Sparkles } from "lucide-react";
@@ -92,8 +93,30 @@ export function ChatPanel({ role, prompts }: ChatPanelProps) {
         </p>
       </Lightbox>
 
-      <section className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden rounded-lg border bg-card shadow-soft-border">
-        <div className="shrink-0 flex items-center justify-between border-b px-4 py-3">
+      <section className="relative flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden rounded-lg border bg-card shadow-soft-border">
+        <div
+          aria-hidden="true"
+          className="memoji-badge-stage pointer-events-none absolute left-1/2 top-[19rem] z-0 h-40 w-40 -translate-x-1/2 opacity-[0.12] sm:top-24 sm:h-56 sm:w-56"
+        >
+          <div className="memoji-coin h-full w-full">
+            <Image
+              alt=""
+              className="memoji-coin-face object-contain"
+              height={224}
+              src="/memoji.png"
+              width={224}
+            />
+            <Image
+              alt=""
+              className="memoji-coin-face memoji-coin-face-back object-contain"
+              height={224}
+              src="/real-me.png"
+              width={224}
+            />
+          </div>
+        </div>
+
+        <div className="relative z-10 flex shrink-0 items-center justify-between border-b bg-card/92 px-4 py-3 backdrop-blur-sm">
           <div className="flex items-center gap-2 text-sm font-medium">
             <Sparkles className="h-4 w-4 text-primary" />
             BrandonCantrell.ai
@@ -103,7 +126,7 @@ export function ChatPanel({ role, prompts }: ChatPanelProps) {
           </div>
         </div>
 
-        <div className="min-h-0 min-w-0 flex-1 space-y-4 overflow-y-auto p-4" ref={messagesRef}>
+        <div className="relative z-10 min-h-0 min-w-0 flex-1 space-y-4 overflow-y-auto p-4" ref={messagesRef}>
           {messages.map((message) => (
             <div key={message.id} className={message.role === "user" ? "flex justify-end" : "flex justify-start"}>
               <div
@@ -125,7 +148,7 @@ export function ChatPanel({ role, prompts }: ChatPanelProps) {
           ) : null}
         </div>
 
-        <div className="shrink-0 border-t p-4">
+        <div className="relative z-10 shrink-0 border-t bg-card/92 p-4 backdrop-blur-sm">
           <div className="mb-3 flex flex-wrap gap-2">
             {prompts.map((prompt) => (
               <button
